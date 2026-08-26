@@ -6,6 +6,10 @@ All notable changes to OpenTakeoff. Dates are release/merge dates on `main`.
 
 ### Added
 - **MEASUREMENTS under the condition total.** The live readout now lists every linear run and wall of the active condition, numbered in draw order: a run as its length (`01 47.2 LF linear`), a wall as the tape math (`03 39.1 LF × 8 ft = 313.1 SF`), per-wall height winning over the condition height. The lines sum to the totals above them, so a wall-tile figure is checked line by line without opening the panel; metric converts each line. Pure tally in `lib/measurementBreakdown.js` (tested), reading stored shape metrics — nothing is re-measured. Prompted by a downstream fork's spec (replicant026/fork-opentakeoff, PR #341); implemented here independently.
+## 2026-08-26 — Report is on screen at every width
+
+### Fixed
+- **Report and ⋯ were off the right edge on 1440-class laptops.** The toolbar is ~1,375px of fixed-width controls (its contract since #61: nothing wraps or shifts mid-work), and at 1366 or 1280 wide the row scrolled itself — a thin scrollbar nobody finds, with the canvas eating wheel gestures — so Report read as unclickable. The bar is now two parts: the working controls scroll as one region, and **Report, ⋯, presence and account are pinned outside it**, on screen at any width. Nothing wraps; at full width the bar is pixel-identical. Verified in 1366×768, 1280×720 and 1024×700 frames.
 
 ## 2026-08-24 — the takeoff goes back into CAD
 
